@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -19,10 +18,9 @@ import android.widget.Toast;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import Data.DatabaseHandler;
-import Model.Car;
+import com.android.uraall.carsdbwithroomstartercode.Data.DatabaseHandler;
+import com.android.uraall.carsdbwithroomstartercode.Model.Car;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(carsAdapter);
 
-
         FloatingActionButton floatingActionButton =
                 (FloatingActionButton) findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -58,8 +55,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         });
-
-
     }
 
     public void addAndEditCars(final boolean isUpdate, final Car car, final int position) {
@@ -84,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton(isUpdate ? "Update" : "Save", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogBox, int id) {
-
                     }
                 })
                 .setNegativeButton(isUpdate ? "Delete" : "Cancel",
@@ -95,14 +89,10 @@ public class MainActivity extends AppCompatActivity {
 
                                     deleteCar(car, position);
                                 } else {
-
                                     dialogBox.cancel();
-
                                 }
-
                             }
                         });
-
 
         final AlertDialog alertDialog = alertDialogBuilderUserInput.create();
         alertDialog.show();
@@ -120,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     alertDialog.dismiss();
                 }
-
 
                 if (isUpdate && car != null) {
 
@@ -152,14 +141,11 @@ public class MainActivity extends AppCompatActivity {
         cars.set(position, car);
 
         carsAdapter.notifyDataSetChanged();
-
-
     }
 
     private void createCar(String name, String price) {
 
         long id = dbHandler.insertCar(name, price);
-
 
         Car car = dbHandler.getCar(id);
 
@@ -167,8 +153,6 @@ public class MainActivity extends AppCompatActivity {
 
             cars.add(0, car);
             carsAdapter.notifyDataSetChanged();
-
         }
-
     }
 }

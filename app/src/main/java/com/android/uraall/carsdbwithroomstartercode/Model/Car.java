@@ -1,4 +1,4 @@
-package Model;
+package com.android.uraall.carsdbwithroomstartercode.Model;
 
 public class Car {
     private long id;

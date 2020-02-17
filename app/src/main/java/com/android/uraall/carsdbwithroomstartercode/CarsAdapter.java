@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import Model.Car;
+import com.android.uraall.carsdbwithroomstartercode.Model.Car;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.MyViewHolder> {
 
